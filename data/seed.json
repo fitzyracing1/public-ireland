@@ -1,0 +1,114 @@
+{
+  "accounts": [
+    {
+      "AccountId": "87cb60fe-a16e-4189-a9da-949c187113ba",
+      "Status": "Enabled",
+      "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
+      "Currency": "EUR",
+      "AccountType": "Personal",
+      "AccountSubType": "CurrentAccount",
+      "Nickname": "Everyday Current",
+      "Account": [
+        {
+          "SchemeName": "UK.OBIE.IBAN",
+          "Identification": "IE47BOFI90126312660908",
+          "Name": "Test PSU ROI"
+        }
+      ]
+    },
+    {
+      "AccountId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "Status": "Enabled",
+      "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
+      "Currency": "EUR",
+      "AccountType": "Personal",
+      "AccountSubType": "Savings",
+      "Nickname": "Savings",
+      "Account": [
+        {
+          "SchemeName": "UK.OBIE.IBAN",
+          "Identification": "IE29BOFI90126312345678",
+          "Name": "Test PSU ROI"
+        }
+      ]
+    },
+    {
+      "AccountId": "f0e1d2c3-b4a5-9687-fedc-ba0987654321",
+      "Status": "Enabled",
+      "StatusUpdateDateTime": "2019-01-01T06:06:06+00:00",
+      "Currency": "GBP",
+      "AccountType": "Personal",
+      "AccountSubType": "CurrentAccount",
+      "Nickname": "UK Current",
+      "Account": [
+        {
+          "SchemeName": "UK.OBIE.SortCodeAccountNumber",
+          "Identification": "90949240279869",
+          "Name": "Test PSU UK"
+        }
+      ]
+    }
+  ],
+  "balances": {
+    "87cb60fe-a16e-4189-a9da-949c187113ba": [
+      {
+        "AccountId": "87cb60fe-a16e-4189-a9da-949c187113ba",
+        "CreditDebitIndicator": "Credit",
+        "Type": "InterimAvailable",
+        "DateTime": "2026-07-28T10:00:00+00:00",
+        "Amount": { "Amount": "2450.75", "Currency": "EUR" }
+      },
+      {
+        "AccountId": "87cb60fe-a16e-4189-a9da-949c187113ba",
+        "CreditDebitIndicator": "Credit",
+        "Type": "InterimBooked",
+        "DateTime": "2026-07-28T10:00:00+00:00",
+        "Amount": { "Amount": "2450.75", "Currency": "EUR" }
+      }
+    ],
+    "a1b2c3d4-e5f6-7890-abcd-ef1234567890": [
+      {
+        "AccountId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "CreditDebitIndicator": "Credit",
+        "Type": "InterimAvailable",
+        "DateTime": "2026-07-28T10:00:00+00:00",
+        "Amount": { "Amount": "12500.00", "Currency": "EUR" }
+      }
+    ],
+    "f0e1d2c3-b4a5-9687-fedc-ba0987654321": [
+      {
+        "AccountId": "f0e1d2c3-b4a5-9687-fedc-ba0987654321",
+        "CreditDebitIndicator": "Credit",
+        "Type": "InterimAvailable",
+        "DateTime": "2026-07-28T10:00:00+00:00",
+        "Amount": { "Amount": "890.40", "Currency": "GBP" }
+      }
+    ]
+  },
+  "transactions": {
+    "87cb60fe-a16e-4189-a9da-949c187113ba": [
+      {
+        "AccountId": "87cb60fe-a16e-4189-a9da-949c187113ba",
+        "TransactionId": "TR-BOI-001",
+        "CreditDebitIndicator": "Credit",
+        "Status": "Booked",
+        "BookingDateTime": "2026-07-20T09:15:00+00:00",
+        "ValueDateTime": "2026-07-20T09:15:00+00:00",
+        "Amount": { "Amount": "2500.00", "Currency": "EUR" },
+        "TransactionInformation": "Salary July",
+        "ProprietaryBankTransactionCode": { "Code": "SALARY" }
+      },
+      {
+        "AccountId": "87cb60fe-a16e-4189-a9da-949c187113ba",
+        "TransactionId": "TR-BOI-002",
+        "CreditDebitIndicator": "Debit",
+        "Status": "Booked",
+        "BookingDateTime": "2026-07-22T14:30:00+00:00",
+        "ValueDateTime": "2026-07-22T14:30:00+00:00",
+        "Amount": { "Amount": "49.25", "Currency": "EUR" },
+        "TransactionInformation": "Tesco Dublin",
+        "ProprietaryBankTransactionCode": { "Code": "POS" }
+      }
+    ]
+  }
+}
