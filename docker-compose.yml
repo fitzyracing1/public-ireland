@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  bank-of-ireland-sandbox:
+    build: .
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:3004/')"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
