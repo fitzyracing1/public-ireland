@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bank of Ireland Open Banking AISP Sandbox • public-ireland</title>
+<meta name="description" content="Local offline simulator of Bank of Ireland Open Banking Account Information Services APIs. No certificates required.">
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 800px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+  header { text-align: center; margin-bottom: 2.5rem; }
+  .badge {
+    display: inline-block;
+    background: #d2992218;
+    color: var(--orange);
+    border: 1px solid #d2992240;
+    padding: 0.25rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle { color: var(--muted); font-size: 1.05rem; max-width: 520px; margin: 0 auto 1.8rem; }
+  .btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  a.btn {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #0d1117; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { background: var(--card); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .card h2 { font-size: 1.15rem; margin-bottom: 0.8rem; color: var(--accent); }
+  .card ul { padding-left: 1.2rem; color: var(--muted); }
+  .card li { margin-bottom: 0.35rem; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: #21262d;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+  }
+  .port {
+    display: inline-block;
+    background: #23863633;
+    color: var(--green);
+    padding: 0.2rem 0.7rem;
+    border-radius: 6px;
+    font-family: ui-monospace, monospace;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .note {
+    background: #161b22;
+    border-left: 3px solid var(--orange);
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-top: 1.5rem;
+  }
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Open Banking • AISP</div>
+      <h1>Bank of Ireland Sandbox</h1>
+      <p class="subtitle">
+        Local offline simulator of Bank of Ireland Account Information Services APIs.<br>
+        No certificates • No TPP registration • Pure Python
+      </p>
+      <div class="btns">
+        <a class="btn btn-primary" href="https://github.com/fitzyracing1/public-ireland">View on GitHub</a>
+        <a class="btn btn-secondary" href="https://github.com/fitzyracing1/public">General Sandboxes →</a>
+      </div>
+    </header>
+
+    <div class="card">
+      <h2>Quick Start</h2>
+      <div class="port">localhost:3004</div>
+      <ul>
+        <li><code>python mock_server.py --port 3004</code></li>
+        <li>or <code>docker compose up --build</code></li>
+        <li>Use <code>Authorization: Bearer sandbox-token</code> for instant access</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>What is included</h2>
+      <ul>
+        <li><code>mock_server.py</code> — pure-Python Open Banking AISP simulator</li>
+        <li><code>sdk/</code> — clean Python client (<code>BankOfIrelandClient</code>)</li>
+        <li><code>data/seed.json</code> — realistic IE (EUR) + UK (GBP) test accounts</li>
+        <li>Dockerfile + docker-compose.yml</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Main endpoints</h2>
+      <ul>
+        <li><code>POST /oauth/as/token.oauth2</code></li>
+        <li><code>POST /account-access-consents</code></li>
+        <li><code>GET  /accounts</code></li>
+        <li><code>GET  /accounts/{id}/balances</code></li>
+        <li><code>GET  /accounts/{id}/transactions</code></li>
+      </ul>
+    </div>
+
+    <div class="note">
+      The real Bank of Ireland sandbox requires TPP registration, SSA and eIDAS certificates.<br>
+      This local version needs none of that — perfect for offline development and CI.
+    </div>
+
+    <footer>
+      Part of the <a href="https://github.com/fitzyracing1/public">public</a> sandboxes collection ·
+      Built by <a href="https://github.com/fitzyracing1">fitzyracing1</a>
+    </footer>
+  </div>
+</body>
+</html>
